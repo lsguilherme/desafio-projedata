@@ -39,5 +39,20 @@ public class Main {
         for (Funcionario funcionario : funcionarios){
             System.out.println(funcionario);
         }
+
+        System.out.println("-------------------------------------------------------------");
+        // 3.4 Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor
+        System.out.println("ATUALIZANDO SALÁRIO...");
+
+        System.out.println("----------------|-----------------|----------|---------------");
+        System.out.println("Nome            | Data Nascimento | Salário  | Função");
+        System.out.println("----------------|-----------------|----------|---------------");
+        for (Funcionario funcionario: funcionarios){
+            funcionario.aumentoNoSalario(10);
+            System.out.println(funcionario);
+        }
+
+        System.out.println("-------------------------------------------------------------");
+        
     }
 }

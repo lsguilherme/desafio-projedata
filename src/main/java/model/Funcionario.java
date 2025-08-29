@@ -37,6 +37,11 @@ public class Funcionario extends Pessoa{
         return df.format(salario);
     }
 
+    public void aumentoNoSalario(double percentual){
+        BigDecimal multiplicador = new BigDecimal(String.valueOf(1 + percentual / 100));
+        salario = this.salario.multiply(multiplicador);
+    }
+
     @Override
     public String toString() {
         return String.format("%-15s | %-15s | %-8s | %-15s",
