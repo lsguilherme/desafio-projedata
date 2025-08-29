@@ -3,7 +3,9 @@ import model.Funcionario;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
@@ -53,6 +55,12 @@ public class Main {
         }
 
         System.out.println("-------------------------------------------------------------");
-        
+
+        // 3.5 – Agrupar os funcionários por função em um MAP, sendo a chave a “função” e o valor a “lista de funcionários”.
+        Map<String, List<Funcionario>> funcionarioMap = new HashMap<>();
+
+        for (Funcionario funcionario : funcionarios){
+            funcionarioMap.computeIfAbsent(funcionario.getFuncao(), k -> new ArrayList<>()).add(funcionario);
+        }
     }
 }
