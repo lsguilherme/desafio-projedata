@@ -28,5 +28,13 @@ public class Main {
                 break;
             }
         }
+        /*
+            3.3 – Imprimir todos os funcionários com todas suas informações, sendo que:
+                • informação de data deve ser exibido no formato dd/mm/aaaa;
+                • informação de valor numérico deve ser exibida no formatado com separador de milhar como ponto e decimal como vírgula.
+        */
+        for (Funcionario funcionario : funcionarios){
+            System.out.println(funcionario);
+        }
     }
 }
