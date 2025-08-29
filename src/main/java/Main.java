@@ -2,6 +2,7 @@ import model.Funcionario;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +45,7 @@ public class Main {
 
         System.out.println("-------------------------------------------------------------");
         // 3.4 Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor
-        System.out.println("ATUALIZANDO SALÁRIO...");
+        System.out.println("\n\nATUALIZANDO SALÁRIO...\n\n");
 
         System.out.println("----------------|-----------------|----------|---------------");
         System.out.println("Nome            | Data Nascimento | Salário  | Função");
@@ -54,7 +55,7 @@ public class Main {
             System.out.println(funcionario);
         }
 
-        System.out.println("-------------------------------------------------------------");
+        System.out.println("\n\n-------------------------------------------------------------\n\n");
 
         // 3.5 – Agrupar os funcionários por função em um MAP, sendo a chave a “função” e o valor a “lista de funcionários”.
         Map<String, List<Funcionario>> funcionarioMap = new HashMap<>();
@@ -71,5 +72,31 @@ public class Main {
             }
             System.out.println("-------------------------------------------------------------");
         }
+
+        // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
+        System.out.println("\n\nFuncionários que fazem aniversário mês 10 e mês 12.");
+        System.out.println("-------------------------------------------------------------");
+        for (Funcionario funcionario : funcionarios){
+            int mes = funcionario.getDataNascimento().getMonthValue();
+            if (mes == 10 || mes == 12){
+                System.out.println(funcionario);
+            }
+        }
+
+        // 3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.
+        System.out.println("\n\nFuncionário com a maior idade da empresa.");
+        System.out.println("-------------------------------------------------------------");
+        Funcionario maisVelho = funcionarios.getFirst();
+        for (Funcionario funcionario : funcionarios){
+            if (funcionario.getDataNascimento().isBefore(maisVelho.getDataNascimento())){
+                maisVelho = funcionario;
+            };
+        }
+        System.out.println("Nome       | Idade");
+        System.out.println("-------------------------------------------------------------");
+        System.out.format("%-10s | %-4s",
+                maisVelho.getNome(),
+                maisVelho.calcularIdade()
+        );
     }
 }

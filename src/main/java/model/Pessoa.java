@@ -1,6 +1,7 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Pessoa {
@@ -33,5 +34,9 @@ public abstract class Pessoa {
 
     public String getDataNascimentoFormatada(){
         return dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+
+    public int calcularIdade(){
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
     }
 }
