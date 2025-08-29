@@ -5,7 +5,6 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.*;
 
 public class Main {
@@ -31,6 +30,7 @@ public class Main {
                 break;
             }
         }
+
         /*
             3.3 – Imprimir todos os funcionários com todas suas informações, sendo que:
                 • informação de data deve ser exibido no formato dd/mm/aaaa;
@@ -44,6 +44,7 @@ public class Main {
         }
 
         System.out.println("-------------------------------------------------------------");
+
         // 3.4 Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor
         System.out.println("\n\nATUALIZANDO SALÁRIO...\n\n");
 
