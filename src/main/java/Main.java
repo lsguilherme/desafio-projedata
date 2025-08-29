@@ -1,6 +1,8 @@
 import model.Funcionario;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
@@ -106,5 +108,19 @@ public class Main {
                 .toList();
 
         funcionariosOrdenados.forEach(System.out::println);
+
+        // 3.11 – Imprimir o total dos salários dos funcionários.
+        System.out.println("\n\nSalário total dos funcionários");
+        System.out.println("-------------------------------------------------------------");
+        BigDecimal salarioTotal = BigDecimal.ZERO;
+
+        DecimalFormat df = new DecimalFormat("#.00", new DecimalFormatSymbols(Locale.of("pt", "BR")));
+
+
+        for (Funcionario funcionario : funcionarios){
+            salarioTotal = salarioTotal.add(funcionario.getSalario());
+        }
+
+        System.out.println("Total: R$ " + df.format(salarioTotal));
     }
 }
