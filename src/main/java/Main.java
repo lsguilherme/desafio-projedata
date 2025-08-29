@@ -9,6 +9,7 @@ public class Main {
     public static void main(String[] args) {
         List<Funcionario> funcionarios = new ArrayList<>();
 
+        // 3.1 – Inserir todos os funcionários, na mesma ordem e informações da tabela acima.
         funcionarios.add(new Funcionario("Maria", LocalDate.of(2000, 10, 18), BigDecimal.valueOf(2_009.44), "Operador"));
         funcionarios.add(new Funcionario("João", LocalDate.of(1990, 5, 12), BigDecimal.valueOf(2_284.38), "Operador"));
         funcionarios.add(new Funcionario("Caio", LocalDate.of(1961, 5, 2), BigDecimal.valueOf(9_836.14), "Coordenador"));
@@ -20,5 +21,12 @@ public class Main {
         funcionarios.add(new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), BigDecimal.valueOf(1_606.85), "Eletricista"));
         funcionarios.add(new Funcionario("Helena", LocalDate.of(1996, 9, 2), BigDecimal.valueOf(2_799.93), "Gerente"));
 
+        // 3.2 – Remover o funcionário “João” da lista.
+        for (int i = 0; i < funcionarios.size(); i++){
+            if(funcionarios.get(i).getNome().equals("João")){
+                funcionarios.remove(i);
+                break;
+            }
+        }
     }
 }
