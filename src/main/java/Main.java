@@ -62,5 +62,14 @@ public class Main {
         for (Funcionario funcionario : funcionarios){
             funcionarioMap.computeIfAbsent(funcionario.getFuncao(), k -> new ArrayList<>()).add(funcionario);
         }
+
+        // 3.6 – Imprimir os funcionários, agrupados por função.
+        for (Map.Entry<String, List<Funcionario>> entry : funcionarioMap.entrySet()){
+            System.out.println(entry.getKey());
+            for (Funcionario funcionario : entry.getValue()){
+                System.out.println(" - " + funcionario);
+            }
+            System.out.println("-------------------------------------------------------------");
+        }
     }
 }
