@@ -1,6 +1,7 @@
 import model.Funcionario;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.time.LocalDate;
@@ -116,11 +117,20 @@ public class Main {
 
         DecimalFormat df = new DecimalFormat("#.00", new DecimalFormatSymbols(Locale.of("pt", "BR")));
 
-
         for (Funcionario funcionario : funcionarios){
             salarioTotal = salarioTotal.add(funcionario.getSalario());
         }
 
         System.out.println("Total: R$ " + df.format(salarioTotal));
+
+        // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.
+        System.out.println("\n\nSalário mínimos por funcionários");
+        System.out.println("-------------------------------------------------------------");
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+
+        for (Funcionario funcionario : funcionarios){
+            BigDecimal quantidadeSalariosMinimo = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
+            System.out.println(funcionario.getNome() + " ganha " + quantidadeSalariosMinimo + " salários mínimos");
+        }
     }
 }
