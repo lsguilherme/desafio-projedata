@@ -3,10 +3,7 @@ import model.Funcionario;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -98,5 +95,16 @@ public class Main {
                 maisVelho.getNome(),
                 maisVelho.calcularIdade()
         );
+
+        // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
+
+        System.out.println("\n\nFuncionários por ordem alfabética");
+
+        System.out.println("-------------------------------------------------------------");
+        List<Funcionario> funcionariosOrdenados = funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getNome))
+                .toList();
+
+        funcionariosOrdenados.forEach(System.out::println);
     }
 }
