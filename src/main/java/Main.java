@@ -33,6 +33,9 @@ public class Main {
                 • informação de data deve ser exibido no formato dd/mm/aaaa;
                 • informação de valor numérico deve ser exibida no formatado com separador de milhar como ponto e decimal como vírgula.
         */
+        System.out.println("----------------|-----------------|----------|---------------");
+        System.out.println("Nome            | Data Nascimento | Salário  | Função");
+        System.out.println("----------------|-----------------|----------|---------------");
         for (Funcionario funcionario : funcionarios){
             System.out.println(funcionario);
         }
