@@ -28,13 +28,9 @@ public class Main {
         // 3.4 Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor
         System.out.println("\n\nATUALIZANDO SALÁRIO...\n\n");
 
-        System.out.println("----------------|-----------------|----------|---------------");
-        System.out.println("Nome            | Data Nascimento | Salário  | Função");
-        System.out.println("----------------|-----------------|----------|---------------");
-        for (Funcionario funcionario: funcionarios){
-            funcionario.aumentoNoSalario(10);
-            System.out.println(funcionario);
-        }
+        cabecalhoTabelaAsc();
+        aumentoSalarial(funcionarios, 10);
+        imprimirFuncionarios(funcionarios);
 
         System.out.println("\n\n-------------------------------------------------------------\n\n");
 
@@ -138,6 +134,10 @@ public class Main {
 
     private static void removerFuncionario(List<Funcionario> funcionarios, String nome){
         funcionarios.removeIf(f -> f.getNome().equals(nome));
+    }
+
+    private static void aumentoSalarial(List<Funcionario> funcionarios, double percentual){
+        funcionarios.forEach(f -> f.aumentoNoSalario(percentual));
     }
 
     private static void cabecalhoTabelaAsc(){
