@@ -50,17 +50,7 @@ public class Main {
         imprimirFuncionarioPorOrdemAlfabetica(funcionarios);
 
         // 3.11 – Imprimir o total dos salários dos funcionários.
-        System.out.println("\n\nSalário total dos funcionários");
-        System.out.println("-------------------------------------------------------------");
-        BigDecimal salarioTotal = BigDecimal.ZERO;
-
-        DecimalFormat df = new DecimalFormat("#.00", new DecimalFormatSymbols(Locale.of("pt", "BR")));
-
-        for (Funcionario funcionario : funcionarios){
-            salarioTotal = salarioTotal.add(funcionario.getSalario());
-        }
-
-        System.out.println("Total: R$ " + df.format(salarioTotal));
+        imprimirSalarioTotalDosFuncionarios(funcionarios);
 
         // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.
         System.out.println("\n\nSalário mínimos por funcionários");
@@ -71,6 +61,20 @@ public class Main {
             BigDecimal quantidadeSalariosMinimo = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
             System.out.println(funcionario.getNome() + " ganha " + quantidadeSalariosMinimo + " salários mínimos");
         }
+    }
+
+    private static void imprimirSalarioTotalDosFuncionarios(List<Funcionario> funcionarios) {
+        System.out.println("\n\nSalário total dos funcionários");
+        divisoria();
+        BigDecimal salarioTotal = BigDecimal.ZERO;
+
+        DecimalFormat df = new DecimalFormat("#.00", new DecimalFormatSymbols(Locale.of("pt", "BR")));
+
+        for (Funcionario funcionario : funcionarios){
+            salarioTotal = salarioTotal.add(funcionario.getSalario());
+        }
+
+        System.out.println("Total: R$ " + df.format(salarioTotal));
     }
 
     private static void imprimirFuncionarioPorOrdemAlfabetica(List<Funcionario> funcionarios) {
