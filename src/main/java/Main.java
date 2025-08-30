@@ -44,20 +44,7 @@ public class Main {
         imprimirAniversariantes(funcionarios, 10, 12);
 
         // 3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.
-        System.out.println("\n\nFuncionário com a maior idade da empresa.");
-        System.out.println("-------------------------------------------------------------");
-        Funcionario maisVelho = funcionarios.getFirst();
-        for (Funcionario funcionario : funcionarios){
-            if (funcionario.getDataNascimento().isBefore(maisVelho.getDataNascimento())){
-                maisVelho = funcionario;
-            };
-        }
-        System.out.println("Nome       | Idade");
-        System.out.println("-------------------------------------------------------------");
-        System.out.format("%-10s | %-4s",
-                maisVelho.getNome(),
-                maisVelho.calcularIdade()
-        );
+        imprimirFuncionarioMaisVelho(funcionarios);
 
         // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
 
@@ -92,6 +79,23 @@ public class Main {
             BigDecimal quantidadeSalariosMinimo = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
             System.out.println(funcionario.getNome() + " ganha " + quantidadeSalariosMinimo + " salários mínimos");
         }
+    }
+
+    private static void imprimirFuncionarioMaisVelho(List<Funcionario> funcionarios) {
+        System.out.println("\n\nFuncionário com a maior idade da empresa.");
+        System.out.println("-------------------------------------------------------------");
+        Funcionario maisVelho = funcionarios.getFirst();
+        for (Funcionario funcionario : funcionarios){
+            if (funcionario.getDataNascimento().isBefore(maisVelho.getDataNascimento())){
+                maisVelho = funcionario;
+            };
+        }
+        System.out.println("Nome       | Idade");
+        System.out.println("-------------------------------------------------------------");
+        System.out.format("%-10s | %-4s",
+                maisVelho.getNome(),
+                maisVelho.calcularIdade()
+        );
     }
 
     private static void imprimirAniversariantes(List<Funcionario> funcionarios, int... meses) {
