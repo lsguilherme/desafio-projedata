@@ -23,17 +23,15 @@ public class Main {
                 • informação de data deve ser exibido no formato dd/mm/aaaa;
                 • informação de valor numérico deve ser exibida no formatado com separador de milhar como ponto e decimal como vírgula.
         */
-        cabecalhoTabelaAsc();
-        imprimirFuncionarios(funcionarios);
+        imprimirFuncionarios("Lista de funcionarios", funcionarios);
 
         divisoria();
 
         // 3.4 Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor
         System.out.println("\n\nATUALIZANDO SALÁRIO...\n\n");
 
-        cabecalhoTabelaAsc();
         aumentoSalarial(funcionarios, 10);
-        imprimirFuncionarios(funcionarios);
+        imprimirFuncionarios("Lista de funcionarios após o reajuste de salário", funcionarios);
 
         divisoria();
 
@@ -137,7 +135,9 @@ public class Main {
         }
     }
 
-    private static void imprimirFuncionarios(List<Funcionario> funcionarios) {
+    private static void imprimirFuncionarios(String titulo, List<Funcionario> funcionarios) {
+        System.out.println(titulo);
+        cabecalhoTabelaAsc();
         for (Funcionario funcionario : funcionarios){
             System.out.println(funcionario);
         }
