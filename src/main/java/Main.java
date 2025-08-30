@@ -20,12 +20,8 @@ public class Main {
                 • informação de data deve ser exibido no formato dd/mm/aaaa;
                 • informação de valor numérico deve ser exibida no formatado com separador de milhar como ponto e decimal como vírgula.
         */
-        System.out.println("----------------|-----------------|----------|---------------");
-        System.out.println("Nome            | Data Nascimento | Salário  | Função");
-        System.out.println("----------------|-----------------|----------|---------------");
-        for (Funcionario funcionario : funcionarios){
-            System.out.println(funcionario);
-        }
+        cabecalhoTabelaAsc();
+        imprimirFuncionarios(funcionarios);
 
         System.out.println("-------------------------------------------------------------");
 
@@ -119,6 +115,12 @@ public class Main {
         }
     }
 
+    private static void imprimirFuncionarios(List<Funcionario> funcionarios) {
+        for (Funcionario funcionario : funcionarios){
+            System.out.println(funcionario);
+        }
+    }
+
     private static List<Funcionario> inserirFuncionarios(){
         List<Funcionario> funcionarios = new ArrayList<>();
         funcionarios.add(new Funcionario("Maria", LocalDate.of(2000, 10, 18), BigDecimal.valueOf(2_009.44), "Operador"));
@@ -136,5 +138,11 @@ public class Main {
 
     private static void removerFuncionario(List<Funcionario> funcionarios, String nome){
         funcionarios.removeIf(f -> f.getNome().equals(nome));
+    }
+
+    private static void cabecalhoTabelaAsc(){
+        System.out.println("----------------|-----------------|----------|---------------");
+        System.out.println("Nome            | Data Nascimento | Salário  | Função");
+        System.out.println("----------------|-----------------|----------|---------------");
     }
 }
