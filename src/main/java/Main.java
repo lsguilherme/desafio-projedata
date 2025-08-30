@@ -8,6 +8,9 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
+
+    private static final BigDecimal SALARIO_MINIMO = new BigDecimal("1212.00");
+
     public static void main(String[] args) {
         // 3.1 – Inserir todos os funcionários, na mesma ordem e informações da tabela acima.
         List<Funcionario> funcionarios = inserirFuncionarios();
@@ -53,13 +56,16 @@ public class Main {
         imprimirSalarioTotalDosFuncionarios(funcionarios);
 
         // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário, considerando que o salário mínimo é R$1212.00.
+        imprimirQuantosSalariosMinimosPorFuncionario(funcionarios, SALARIO_MINIMO);
+    }
+
+    private static void imprimirQuantosSalariosMinimosPorFuncionario(List<Funcionario> funcionarios, BigDecimal salarioMinimo) {
         System.out.println("\n\nSalário mínimos por funcionários");
-        System.out.println("-------------------------------------------------------------");
-        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+        divisoria();
 
         for (Funcionario funcionario : funcionarios){
             BigDecimal quantidadeSalariosMinimo = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
-            System.out.println(funcionario.getNome() + " ganha " + quantidadeSalariosMinimo + " salários mínimos");
+            System.out.println(funcionario.getNome() + " recebe " + quantidadeSalariosMinimo + " salários mínimos");
         }
     }
 
