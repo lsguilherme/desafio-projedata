@@ -41,14 +41,7 @@ public class Main {
         imprimirFuncionariosPorFuncao(funcionariosMap);
 
         // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
-        System.out.println("\n\nFuncionários que fazem aniversário mês 10 e mês 12.");
-        System.out.println("-------------------------------------------------------------");
-        for (Funcionario funcionario : funcionarios){
-            int mes = funcionario.getDataNascimento().getMonthValue();
-            if (mes == 10 || mes == 12){
-                System.out.println(funcionario);
-            }
-        }
+        imprimirAniversariantes(funcionarios, 10, 12);
 
         // 3.9 – Imprimir o funcionário com a maior idade, exibir os atributos: nome e idade.
         System.out.println("\n\nFuncionário com a maior idade da empresa.");
@@ -98,6 +91,19 @@ public class Main {
         for (Funcionario funcionario : funcionarios){
             BigDecimal quantidadeSalariosMinimo = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
             System.out.println(funcionario.getNome() + " ganha " + quantidadeSalariosMinimo + " salários mínimos");
+        }
+    }
+
+    private static void imprimirAniversariantes(List<Funcionario> funcionarios, int... meses) {
+        System.out.println("\n\nFuncionários que fazem aniversário nos meses: " + Arrays.toString(meses).replaceAll("[\\[\\]]", ""));
+        System.out.println("-------------------------------------------------------------");
+        for (Funcionario funcionario : funcionarios){
+            int mes = funcionario.getDataNascimento().getMonthValue();
+            for (int m : meses){
+                if (mes == m){
+                    System.out.println(funcionario);
+                }
+            }
         }
     }
 
