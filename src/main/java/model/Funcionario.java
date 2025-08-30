@@ -20,10 +20,6 @@ public class Funcionario extends Pessoa{
         return salario;
     }
 
-    public void setSalario(BigDecimal salario) {
-        this.salario = salario;
-    }
-
     public String getFuncao() {
         return funcao;
     }
