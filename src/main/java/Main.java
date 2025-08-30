@@ -23,7 +23,7 @@ public class Main {
         cabecalhoTabelaAsc();
         imprimirFuncionarios(funcionarios);
 
-        System.out.println("-------------------------------------------------------------");
+        divisoria();
 
         // 3.4 Os funcionários receberam 10% de aumento de salário, atualizar a lista de funcionários com novo valor
         System.out.println("\n\nATUALIZANDO SALÁRIO...\n\n");
@@ -32,7 +32,7 @@ public class Main {
         aumentoSalarial(funcionarios, 10);
         imprimirFuncionarios(funcionarios);
 
-        System.out.println("\n\n-------------------------------------------------------------\n\n");
+        divisoria();
 
         // 3.5 – Agrupar os funcionários por função em um MAP, sendo a chave a “função” e o valor a “lista de funcionários”.
         Map<String, List<Funcionario>> funcionariosMap = agruparPorFuncao(funcionarios);
@@ -47,15 +47,7 @@ public class Main {
         imprimirFuncionarioMaisVelho(funcionarios);
 
         // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
-
-        System.out.println("\n\nFuncionários por ordem alfabética");
-
-        System.out.println("-------------------------------------------------------------");
-        List<Funcionario> funcionariosOrdenados = funcionarios.stream()
-                .sorted(Comparator.comparing(Funcionario::getNome))
-                .toList();
-
-        funcionariosOrdenados.forEach(System.out::println);
+        imprimirFuncionarioPorOrdemAlfabetica(funcionarios);
 
         // 3.11 – Imprimir o total dos salários dos funcionários.
         System.out.println("\n\nSalário total dos funcionários");
@@ -81,6 +73,17 @@ public class Main {
         }
     }
 
+    private static void imprimirFuncionarioPorOrdemAlfabetica(List<Funcionario> funcionarios) {
+        System.out.println("\n\n\nFuncionários por ordem alfabética");
+        cabecalhoTabelaAsc();
+
+        List<Funcionario> funcionariosOrdenados = funcionarios.stream()
+                .sorted(Comparator.comparing(Funcionario::getNome))
+                .toList();
+
+        funcionariosOrdenados.forEach(System.out::println);
+    }
+
     private static void imprimirFuncionarioMaisVelho(List<Funcionario> funcionarios) {
         System.out.println("\n\nFuncionário com a maior idade da empresa.");
         System.out.println("-------------------------------------------------------------");
@@ -100,7 +103,8 @@ public class Main {
 
     private static void imprimirAniversariantes(List<Funcionario> funcionarios, int... meses) {
         System.out.println("\n\nFuncionários que fazem aniversário nos meses: " + Arrays.toString(meses).replaceAll("[\\[\\]]", ""));
-        System.out.println("-------------------------------------------------------------");
+        divisoria();
+
         for (Funcionario funcionario : funcionarios){
             int mes = funcionario.getDataNascimento().getMonthValue();
             for (int m : meses){
@@ -113,13 +117,13 @@ public class Main {
 
     private static void imprimirFuncionariosPorFuncao(Map<String, List<Funcionario>> funcionariosMap) {
         System.out.println("\n\nFuncionários agrupados por função.");
-        System.out.println("-------------------------------------------------------------");
+        divisoria();
         for (Map.Entry<String, List<Funcionario>> entry : funcionariosMap.entrySet()){
             System.out.println(entry.getKey());
             for (Funcionario funcionario : entry.getValue()){
                 System.out.println(" - " + funcionario);
             }
-            System.out.println("-------------------------------------------------------------");
+            divisoria();
         }
     }
 
@@ -160,6 +164,9 @@ public class Main {
         return funcionarioMap;
     }
 
+    private static void divisoria(){
+        System.out.println("-------------------------------------------------------------");
+    }
     private static void cabecalhoTabelaAsc(){
         System.out.println("----------------|-----------------|----------|---------------");
         System.out.println("Nome            | Data Nascimento | Salário  | Função");
