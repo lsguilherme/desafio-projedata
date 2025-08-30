@@ -35,11 +35,7 @@ public class Main {
         System.out.println("\n\n-------------------------------------------------------------\n\n");
 
         // 3.5 – Agrupar os funcionários por função em um MAP, sendo a chave a “função” e o valor a “lista de funcionários”.
-        Map<String, List<Funcionario>> funcionarioMap = new HashMap<>();
-
-        for (Funcionario funcionario : funcionarios){
-            funcionarioMap.computeIfAbsent(funcionario.getFuncao(), k -> new ArrayList<>()).add(funcionario);
-        }
+        Map<String, List<Funcionario>> funcionarioMap = agruparPorFuncao(funcionarios);
 
         // 3.6 – Imprimir os funcionários, agrupados por função.
         for (Map.Entry<String, List<Funcionario>> entry : funcionarioMap.entrySet()){
@@ -138,6 +134,14 @@ public class Main {
 
     private static void aumentoSalarial(List<Funcionario> funcionarios, double percentual){
         funcionarios.forEach(f -> f.aumentoNoSalario(percentual));
+    }
+
+    private static Map<String, List<Funcionario>> agruparPorFuncao(List<Funcionario> funcionarios) {
+        Map<String, List<Funcionario>> funcionarioMap = new HashMap<>();
+        for (Funcionario funcionario : funcionarios){
+            funcionarioMap.computeIfAbsent(funcionario.getFuncao(), k -> new ArrayList<>()).add(funcionario);
+        }
+        return funcionarioMap;
     }
 
     private static void cabecalhoTabelaAsc(){
