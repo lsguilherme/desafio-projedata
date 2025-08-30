@@ -35,16 +35,10 @@ public class Main {
         System.out.println("\n\n-------------------------------------------------------------\n\n");
 
         // 3.5 – Agrupar os funcionários por função em um MAP, sendo a chave a “função” e o valor a “lista de funcionários”.
-        Map<String, List<Funcionario>> funcionarioMap = agruparPorFuncao(funcionarios);
+        Map<String, List<Funcionario>> funcionariosMap = agruparPorFuncao(funcionarios);
 
         // 3.6 – Imprimir os funcionários, agrupados por função.
-        for (Map.Entry<String, List<Funcionario>> entry : funcionarioMap.entrySet()){
-            System.out.println(entry.getKey());
-            for (Funcionario funcionario : entry.getValue()){
-                System.out.println(" - " + funcionario);
-            }
-            System.out.println("-------------------------------------------------------------");
-        }
+        imprimirFuncionariosPorFuncao(funcionariosMap);
 
         // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
         System.out.println("\n\nFuncionários que fazem aniversário mês 10 e mês 12.");
@@ -104,6 +98,18 @@ public class Main {
         for (Funcionario funcionario : funcionarios){
             BigDecimal quantidadeSalariosMinimo = funcionario.getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_UP);
             System.out.println(funcionario.getNome() + " ganha " + quantidadeSalariosMinimo + " salários mínimos");
+        }
+    }
+
+    private static void imprimirFuncionariosPorFuncao(Map<String, List<Funcionario>> funcionariosMap) {
+        System.out.println("\n\nFuncionários agrupados por função.");
+        System.out.println("-------------------------------------------------------------");
+        for (Map.Entry<String, List<Funcionario>> entry : funcionariosMap.entrySet()){
+            System.out.println(entry.getKey());
+            for (Funcionario funcionario : entry.getValue()){
+                System.out.println(" - " + funcionario);
+            }
+            System.out.println("-------------------------------------------------------------");
         }
     }
 
