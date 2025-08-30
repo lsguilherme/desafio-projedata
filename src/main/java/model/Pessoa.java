@@ -6,10 +6,7 @@ import java.time.format.DateTimeFormatter;
 
 public abstract class Pessoa {
     private String nome;
-    private LocalDate dataNascimento;
-
-    public Pessoa() {
-    }
+    private final LocalDate dataNascimento;
 
     public Pessoa(String nome, LocalDate dataNascimento) {
         this.nome = nome;
@@ -26,10 +23,6 @@ public abstract class Pessoa {
 
     public LocalDate getDataNascimento() {
         return dataNascimento;
-    }
-
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
     }
 
     public String getDataNascimentoFormatada(){
